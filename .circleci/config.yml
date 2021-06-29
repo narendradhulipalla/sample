@@ -11,13 +11,13 @@ jobs:
           command: pwd; ls -lah 
       - run:
           name: Build
-          command: mvn -B -DskipTests clean package -f scholl/pom.xml
+          command: mvn -f scholl/pom.xml -B -DskipTests clean package
       # Then run your tests!
       - run:
           name: Test
-          command: mvn test
+          command: mvn -f scholl/pom.xml test
 
 workflows:
   sample: 
     jobs:
-      - build-and-test -f scholl/pom.xml
+      - build-and-test
